@@ -4,7 +4,7 @@ import { AuthContext } from '../Contexts/AuthProvider';
 
 const Register = () => {
 
-    const {createUser}= use(AuthContext)
+    const {createUser, updateUser, setUser}= use(AuthContext)
 
 
     const handleRegister= (e)=>{
@@ -18,6 +18,17 @@ const Register = () => {
         createUser(email, password)
         .then(result=>{
             console.log(result)
+            const user= result.user
+            updateUser({
+                displayName: name,
+                photoURL: photoUrl
+            })
+            .then(()=>{
+                setUser({...user, displayName: name, photoURL: photoUrl})
+            })
+            .catch(error=>{
+                setUser(user)
+            })
         })
         .catch(error=>{
             console.log(error)
@@ -33,13 +44,13 @@ const Register = () => {
                     <h1 className="text-3xl font-bold">Register now!</h1>
                     <form onSubmit={handleRegister} className="fieldset">
                         <label className="label">Name</label>
-                        <input type="text" name="name" className="input" placeholder="Your Name" />
+                        <input type="text" name="name" className="input" placeholder="Your Name" required/>
                         <label className="label">Email</label>
-                        <input type="email" name="email" className="input" placeholder="Your Email" />
+                        <input type="email" name="email" className="input" placeholder="Your Email" required/>
                         <label className="label">Photo URL</label>
-                        <input type="text" name="photoUrl" className="input" placeholder="Your Photo URL" />
+                        <input type="text" name="photoUrl" className="input" placeholder="Your Photo URL" required/>
                         <label className="label">Password</label>
-                        <input type="password" name="password" className="input" placeholder="Your Password" />
+                        <input type="password" name="password" className="input" placeholder="Your Password" required/>
                         <span className='text-red-500 text-xs'>Error</span>
                         <button type='submit' className="btn btn-neutral mt-4">Register</button>
                     </form>
