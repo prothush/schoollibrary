@@ -5,11 +5,19 @@ import { AuthContext } from '../Contexts/AuthProvider';
 
 const Login = () => {
 
-    const {loginUser, successMsg, errorMsg}= use(AuthContext)
+    const {loginUser, googleSignIn, successMsg, errorMsg}= use(AuthContext)
     const navigate= useNavigate()
 
     const handleGoogle = () => {
+        googleSignIn()
+        .then(result=>{
+            successMsg("Successfully loggedIn with google")
+            navigate("/")
 
+        })
+        .catch(error=>{
+            errorMsg(error.message)
+        })
     }
 
     const handleLogin = (e) => {
