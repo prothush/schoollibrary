@@ -4,10 +4,16 @@ import { AuthContext } from '../Contexts/AuthProvider';
 
 const Navbar = () => {
 
-  const {user, loading}= use(AuthContext)
+  const {user, loading, userLogout, successMsg, errorMsg}= use(AuthContext)
 
   const handleSignout= ()=>{
-
+    userLogout()
+    .then(()=>{
+      successMsg("User signout successfully")
+    })
+    .catch((error)=>{
+      errorMsg(error.message)
+    })
   }
 
   const links = <>
