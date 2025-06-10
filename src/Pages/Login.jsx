@@ -46,7 +46,7 @@ const Login = () => {
                         </div>
                         <button type='submit' className="btn btn-neutral mt-4">Login</button>
                     </form>
-                    <h3 className='text-center text-lg font-semibold'>Or</h3>
+                    <h3 className='text-center text-lg font-semibold divider'>Or</h3>
                     <button onClick={handleGoogle} className="btn btn-neutral"><FcGoogle size={20} /> Sign In With Google</button>
                     <p className='font-semibold text-center'>Don't Have An Account? <Link className='text-secondary' to="/auth/register">Register</Link></p>
                 </div>
