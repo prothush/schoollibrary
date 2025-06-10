@@ -10,6 +10,7 @@ import Home from './Pages/Home.jsx';
 import AuthProvider from './Contexts/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
 import Login from './Pages/Login.jsx';
+import AddBook from './Pages/AddBook.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         index: true,
         Component: Home
       },
+      {
+        path: "/addBooks",
+        Component: AddBook
+      }
     ]
   },
   {
