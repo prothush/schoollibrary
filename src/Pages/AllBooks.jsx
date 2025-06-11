@@ -1,14 +1,19 @@
 import axios from 'axios';
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import AllBookCard from '../Components/AllBookCard';
 
-const bookPromise= axios.get("http://localhost:3000/books").then(res=>res.data)
+// const bookPromise= axios.get("http://localhost:3000/books").then(res=>res.data)
 
 
 const AllBooks = () => {
 
-    const books= use(bookPromise)
-    console.log(books)
+    
+    const [books, setBooks]= useState([])
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/books").then(res=>setBooks(res.data))
+    },[])
+    
 
     return (
         <div className="w-11/12 mx-auto px-4 py-6">
