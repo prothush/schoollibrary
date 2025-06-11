@@ -78,7 +78,7 @@ const AddBook = () => {
 
                     <div>
                         <label className="label font-semibold">Rating</label>
-                        <input name="rating" type="number" step="0.1" className="input input-bordered w-full" required />
+                        <input name="rating" type="number" max="5" step="0.1" className="input input-bordered w-full" required />
                     </div>
                     <div className="pt-4">
                         <button type="submit" className="btn btn-primary w-full">Add Book</button>
