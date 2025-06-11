@@ -13,6 +13,7 @@ import Login from './Pages/Login.jsx';
 import AddBook from './Pages/AddBook.jsx';
 import PrivateRoute from './Contexts/PrivateRoute.jsx';
 import AllBooks from './Pages/AllBooks.jsx';
+import UpdateBook from './Pages/UpdateBook.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: "/allBooks",
         element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>
       },
+      {
+        path: "/updateBook/:id",
+        element: <PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>
+      }
     ]
   },
   {
