@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { use } from 'react';
-import { AuthContext } from '../Contexts/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddBook = () => {
 
-    const { successMsg, errorMsg } = use(AuthContext)
+
 
     const handleAddBook = (e) => {
         e.preventDefault()
@@ -16,13 +16,19 @@ const AddBook = () => {
         axios.post("http://localhost:3000/books", newBook)
             .then(res => {
                 if (res.data.insertedId) {
-                    successMsg("Books added successfully")
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Successfully added the book data ",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     form.reset()
                 }
             })
             .catch(error => {
+
                 
-                errorMsg(error)
             })
     }
 
@@ -35,22 +41,22 @@ const AddBook = () => {
                 <form onSubmit={handleAddBook} className="space-y-6">
                     <div>
                         <label className="label font-semibold">Image</label>
-                        <input type="text" name="image" placeholder="Photo URL" className="input input-bordered w-full" required/>
+                        <input type="text" name="image" placeholder="Photo URL" className="input input-bordered w-full" required />
                     </div>
 
                     <div>
                         <label className="label font-semibold">Title of Book</label>
-                        <input type="text" name="title" placeholder="Book title" className="input input-bordered w-full" required/>
+                        <input type="text" name="title" placeholder="Book title" className="input input-bordered w-full" required />
                     </div>
 
                     <div>
                         <label className="label font-semibold">Quantity</label>
-                        <input type="number" name="quantity" placeholder="Quantity" className="input input-bordered w-full" required/>
+                        <input type="number" name="quantity" placeholder="Quantity" className="input input-bordered w-full" required />
                     </div>
 
                     <div>
                         <label className="label font-semibold">Author Name</label>
-                        <input type="text" name="author" placeholder="Author Name" className="input input-bordered w-full" required/>
+                        <input type="text" name="author" placeholder="Author Name" className="input input-bordered w-full" required />
                     </div>
 
                     <div>
@@ -72,7 +78,7 @@ const AddBook = () => {
 
                     <div>
                         <label className="label font-semibold">Rating</label>
-                        <input name="rating" type="number" step="0.1" className="input input-bordered w-full" required/>
+                        <input name="rating" type="number" step="0.1" className="input input-bordered w-full" required />
                     </div>
                     <div className="pt-4">
                         <button type="submit" className="btn btn-primary w-full">Add Book</button>

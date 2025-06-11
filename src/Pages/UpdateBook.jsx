@@ -28,7 +28,7 @@ const UpdateBook = () => {
                 }
             })
             .catch(error => {
-                console.log(error)
+                
             })
 
 
