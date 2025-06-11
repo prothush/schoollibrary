@@ -1,18 +1,20 @@
 import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthProvider';
 
 const Login = () => {
 
     const {loginUser, googleSignIn, successMsg, errorMsg}= use(AuthContext)
     const navigate= useNavigate()
+    const location= useLocation()
+    console.log(location)
 
     const handleGoogle = () => {
         googleSignIn()
         .then(result=>{
             successMsg("Successfully loggedIn with google")
-            navigate("/")
+            navigate(`${location.state? location.state : "/"}`)
 
         })
         .catch(error=>{
@@ -29,7 +31,7 @@ const Login = () => {
         loginUser(email, password)
         .then(result=>{
             successMsg("Successfully loggedIn")
-            navigate("/")
+            navigate(`${location.state? location.state : "/"}`)
         })
         .catch(error=>{
             errorMsg(error.message)

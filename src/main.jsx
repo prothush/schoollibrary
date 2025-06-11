@@ -11,6 +11,8 @@ import AuthProvider from './Contexts/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
 import Login from './Pages/Login.jsx';
 import AddBook from './Pages/AddBook.jsx';
+import PrivateRoute from './Contexts/PrivateRoute.jsx';
+import AllBooks from './Pages/AllBooks.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,8 +25,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBooks",
-        Component: AddBook
-      }
+        element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
+      },
+      {
+        path: "/allBooks",
+        element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>
+      },
     ]
   },
   {
