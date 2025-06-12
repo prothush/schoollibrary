@@ -79,7 +79,7 @@ const UpdateBook = () => {
 
                     <div>
                         <label className="label font-semibold">Rating</label>
-                        <input name="rating" type="number" step="0.1" defaultValue={rating} className="input input-bordered w-full" required />
+                        <input name="rating" type="number" min="1" max="5" defaultValue={rating} className="input input-bordered w-full" required />
                     </div>
                     <div className="pt-4">
                         <button type="submit" className="btn btn-primary w-full">Update Book</button>
