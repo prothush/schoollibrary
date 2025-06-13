@@ -6,26 +6,43 @@ import axios from 'axios';
 
 const BookDetails = () => {
     const book = useLoaderData()
-    const { user } = use(AuthContext)
+    const { user, successMsg, errorMsg } = use(AuthContext)
 
     const [isBorrowed, setIsBorrowed] = useState(false)
+    const [quantity, setQuantity] = useState(book.quantity)
 
     useEffect(() => {
         axios.get(`http://localhost:3000/borrow?email=${user.email}&bookId=${book._id}`)
             .then(res => {
                 setIsBorrowed(res.data)
             })
-    },[user.email,book._id])
+    }, [user.email, book._id])
 
-    const handleBorrow = () => {
+
+
+    const handleBorrow = (e) => {
+        const form = e.target
+        if (isBorrowed) {
+            errorMsg("You have already borrowed this book")
+            e.preventDefault()
+            return
+        }
+        const name = form.name.value
+        const email = form.email.value
+        const returnDate = form.date.value
         const borrow = {
-            email: user.email,
+            name,
+            email,
+            returnDate,
             bookId: book._id,
         }
+        console.log(borrow)
         axios.post("http://localhost:3000/borrow", borrow)
             .then(res => {
                 console.log(res.data)
                 setIsBorrowed(true)
+                setQuantity(quantity - 1)
+                successMsg("Successfully borrowed this book")
             })
             .catch(error => {
                 console.log(error)
@@ -39,7 +56,7 @@ const BookDetails = () => {
             <p className="text-gray-600">Category: {book.category}</p>
             <p className="mt-4">Author: {book.author}</p>
             <p><strong>Description:</strong> {book.description}</p>
-            <p><strong>Quantity:</strong> {book.quantity}</p>
+            <p><strong>Quantity:</strong> {quantity}</p>
             <div> <strong>Ratings: </strong>
                 <StarRatings
                     rating={parseInt(book.rating)}
@@ -48,10 +65,29 @@ const BookDetails = () => {
                     starRatedColor="yellow"
                 />
             </div>
-            {
-                isBorrowed ? <button className="btn btn-error mt-6">Return</button> : <button onClick={handleBorrow} className="btn btn-success mt-6">Borrow</button> 
-            }
-            
+            <button className="btn btn-success" onClick={() => document.getElementById('my_modal_1').showModal()} disabled={quantity == 0 && "disabled"}>Borrow</button>
+            <dialog id="my_modal_1" className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">Press ESC key or click the button below to close</p>
+                    <div>
+                        <form method="dialog" onSubmit={handleBorrow}>
+                            <fieldset className="fieldset">
+                                <legend className="fieldset-legend">Name</legend>
+                                <input type="text" name="name" value={user.displayName} className="input" placeholder="Type here" disabled />
+                                <legend className="fieldset-legend">Email</legend>
+                                <input type="text" name="email" value={user.email} className="input" placeholder="Type here" disabled />
+                                <legend className="fieldset-legend">Return Date</legend>
+                                <input type="date" name="date" className="input" placeholder="Type here" required />
+                            </fieldset>
+                            <button className="btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+
+
+
 
         </div>
     );

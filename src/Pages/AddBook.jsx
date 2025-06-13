@@ -10,7 +10,12 @@ const AddBook = () => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
-        const newBook = Object.fromEntries(formData.entries())
+        const {quantity, ...rest} = Object.fromEntries(formData.entries())
+        const convertedQty= parseInt(quantity)
+        const newBook={
+            ...rest,
+            quantity : convertedQty
+        }
 
         axios.post("http://localhost:3000/books", newBook)
             .then(res => {

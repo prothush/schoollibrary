@@ -12,7 +12,14 @@ const UpdateBook = () => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
-        const updatedBookData = Object.fromEntries(formData.entries())
+        const {quantity, ...rest} = Object.fromEntries(formData.entries())
+        const convertedQty= parseInt(quantity)
+        const updatedBookData={
+            ...rest,
+            quantity : convertedQty
+        }
+        
+        
 
         axios.put(`http://localhost:3000/books/${_id}`, updatedBookData)
             .then(res => {
