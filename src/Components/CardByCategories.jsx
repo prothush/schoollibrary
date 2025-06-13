@@ -7,7 +7,6 @@ const CardByCategories = ({ cat }) => {
 
 
     const { _id, image, title, author, category, quantity, rating } = cat
-    console.log(typeof rating)
 
 
     return (

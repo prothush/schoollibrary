@@ -34,7 +34,6 @@ const Register = () => {
 
         createUser(email, password)
         .then(result=>{
-            console.log(result)
             const user= result.user
             updateUser({
                 displayName: name,
@@ -51,7 +50,6 @@ const Register = () => {
 
         })
         .catch(error=>{
-            console.log(error)
             errorMsg("Something went wrong...")
         })
     }

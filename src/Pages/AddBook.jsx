@@ -11,7 +11,6 @@ const AddBook = () => {
         const form = e.target
         const formData = new FormData(form)
         const newBook = Object.fromEntries(formData.entries())
-        console.log(newBook)
 
         axios.post("http://localhost:3000/books", newBook)
             .then(res => {

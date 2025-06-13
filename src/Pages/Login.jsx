@@ -8,7 +8,6 @@ const Login = () => {
     const {loginUser, googleSignIn, successMsg, errorMsg}= use(AuthContext)
     const navigate= useNavigate()
     const location= useLocation()
-    console.log(location)
 
     const handleGoogle = () => {
         googleSignIn()

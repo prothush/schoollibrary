@@ -13,7 +13,6 @@ const UpdateBook = () => {
         const form = e.target
         const formData = new FormData(form)
         const updatedBookData = Object.fromEntries(formData.entries())
-        console.log(updatedBookData)
 
         axios.put(`http://localhost:3000/books/${_id}`, updatedBookData)
             .then(res => {
