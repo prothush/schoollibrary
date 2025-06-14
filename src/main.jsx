@@ -17,11 +17,13 @@ import UpdateBook from './Pages/UpdateBook.jsx';
 import Category from './Components/Category.jsx';
 import BookDetails from './Components/BookDetails.jsx';
 import BorrowedBooks from './Pages/BorrowedBooks.jsx';
+import Error from './Pages/Error.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,
