@@ -14,7 +14,7 @@ const BookDetails = () => {
     useEffect(() => {
         axios.get(`http://localhost:3000/borrow?email=${user.email}&bookId=${book._id}`)
             .then(res => {
-                setIsBorrowed(res.data)
+                setIsBorrowed(res.data.length > 0)
             })
     }, [user.email, book._id])
 
@@ -39,7 +39,6 @@ const BookDetails = () => {
         console.log(borrow)
         axios.post("http://localhost:3000/borrow", borrow)
             .then(res => {
-                console.log(res.data)
                 setIsBorrowed(true)
                 setQuantity(quantity - 1)
                 successMsg("Successfully borrowed this book")
@@ -68,8 +67,7 @@ const BookDetails = () => {
             <button className="btn btn-success" onClick={() => document.getElementById('my_modal_1').showModal()} disabled={quantity == 0 && "disabled"}>Borrow</button>
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Press ESC key or click the button below to close</p>
+                    <p className="py-4">Press ESC key to close</p>
                     <div>
                         <form method="dialog" onSubmit={handleBorrow}>
                             <fieldset className="fieldset">
