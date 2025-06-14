@@ -1,18 +1,14 @@
-import axios from 'axios';
-import React, { use, useEffect, useState } from 'react';
+import React from 'react';
 import AllBookCard from '../Components/AllBookCard';
+import { useLoaderData } from 'react-router';
 
-// const bookPromise= axios.get("http://localhost:3000/books").then(res=>res.data)
 
 
 const AllBooks = () => {
-
     
-    const [books, setBooks]= useState([])
+    const books= useLoaderData()
 
-    useEffect(()=>{
-        axios.get("http://localhost:3000/books").then(res=>setBooks(res.data))
-    },[])
+
     
 
     return (

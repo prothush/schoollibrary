@@ -64,7 +64,7 @@ const BookDetails = () => {
                     starRatedColor="yellow"
                 />
             </div>
-            <button className="btn btn-success" onClick={() => document.getElementById('my_modal_1').showModal()} disabled={quantity == 0 && "disabled"}>Borrow</button>
+            <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_1').showModal()} disabled={quantity == 0 && "disabled"}>Borrow</button>
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <p className="py-4">Press ESC key to close</p>
@@ -78,7 +78,7 @@ const BookDetails = () => {
                                 <legend className="fieldset-legend">Return Date</legend>
                                 <input type="date" name="date" className="input" placeholder="Type here" required />
                             </fieldset>
-                            <button className="btn">Submit</button>
+                            <button className="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>

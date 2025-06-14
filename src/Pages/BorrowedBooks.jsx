@@ -85,7 +85,7 @@ const BorrowedBooks = () => {
                                 <p>Return Date: {book.returnDate}</p>
                             </div>
                             <div className="card-actions mt-4 justify-end">
-                                <button onClick={() => handleReturn(book._id, book.bookId)} className="btn btn-sm btn-error">Return</button>
+                                <button onClick={() => handleReturn(book._id, book.bookId)} className="btn btn-sm btn-primary">Return</button>
                             </div>
                         </div>
                     </div>
