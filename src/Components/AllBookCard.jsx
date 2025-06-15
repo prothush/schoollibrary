@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const AllBookCard = ({ book }) => {
+const AllBookCard = ({ book, view }) => {
+  console.log(view)
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
