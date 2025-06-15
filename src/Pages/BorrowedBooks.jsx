@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 
 const BorrowedBooks = () => {
@@ -67,6 +68,9 @@ const BorrowedBooks = () => {
 
     return (
         <div className="p-4 w-11/12 mx-auto">
+            <Helmet>
+                <title>Borrowed Books</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-4">My Borrowed Books</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {borrowedBooks.map((book) => (
@@ -79,6 +83,7 @@ const BorrowedBooks = () => {
 
                         <div className="card-body">
                             <h3 className="card-title">{book.title}</h3>
+                            <p className="text-sm text-gray-500">{book.category}</p>
                             <p className="text-sm text-gray-500">Author: {book.author}</p>
                             <div className="mt-2 text-sm">
                                 <p>Borrowed Date: {book.borrowDate}</p>

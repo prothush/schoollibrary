@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const TableBody = ({ book }) => {
     return (
@@ -11,6 +12,9 @@ const TableBody = ({ book }) => {
                 <td className="p-3 border-b">{book.description}</td>
                 <td className="p-3 border-b">{book.rating}</td>
                 <td className="p-3 border-b">{book.quantity}</td>
+                <td className="p-3 border-b">
+                    <Link to={`/updateBook/${book._id}`}><button className='btn btn-secondary'>Update Book</button></Link>
+                </td>
             </tr>
         </>
 

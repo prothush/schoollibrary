@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AllBookCard from '../Components/AllBookCard';
 import { useLoaderData } from 'react-router';
 import TableBody from '../Components/TableBody';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -28,6 +29,9 @@ const AllBooks = () => {
 
     return (
         <div className="w-11/12 mx-auto px-4 py-6">
+            <Helmet>
+                <title>All Books</title>
+            </Helmet>
             <h1 className="text-xl md:text-3xl font-bold mb-6 text-center">All Books</h1>
             <div className='flex flex-col md:flex-row justify-between gap-5 my-5'>
                 <button onClick={handleToggleBook} className='btn btn-primary'>Show {showAvailable ? "All" : "Available"} Books</button>
@@ -58,6 +62,7 @@ const AllBooks = () => {
                                 <th className="p-3 border-b">Description</th>
                                 <th className="p-3 border-b">Rating</th>
                                 <th className="p-3 border-b">Quantity</th>
+                                <th className="p-3 border-b">Action</th>
                             </tr>
                         </thead>
                         <tbody>

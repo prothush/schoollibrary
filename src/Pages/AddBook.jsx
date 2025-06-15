@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { use } from 'react';
+import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 
 const AddBook = () => {
@@ -10,11 +11,11 @@ const AddBook = () => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
-        const {quantity, ...rest} = Object.fromEntries(formData.entries())
-        const convertedQty= parseInt(quantity)
-        const newBook={
+        const { quantity, ...rest } = Object.fromEntries(formData.entries())
+        const convertedQty = parseInt(quantity)
+        const newBook = {
             ...rest,
-            quantity : convertedQty
+            quantity: convertedQty
         }
 
         axios.post("http://localhost:3000/books", newBook)
@@ -32,7 +33,7 @@ const AddBook = () => {
             })
             .catch(error => {
 
-                
+
             })
     }
 
@@ -40,6 +41,9 @@ const AddBook = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Add Books</title>
+            </Helmet>
             <div className="max-w-3xl mx-auto p-6 mt-10 bg-base-100 shadow-md rounded-lg">
                 <h2 className="text-xl md:text-3xl font-bold text-center mb-8">Add Books</h2>
                 <form onSubmit={handleAddBook} className="space-y-6">

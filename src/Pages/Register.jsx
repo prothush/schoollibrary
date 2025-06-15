@@ -1,11 +1,12 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
 
     const {createUser, updateUser, setUser, successMsg, errorMsg}= use(AuthContext)
-    const [error, setError]= useState("")
+    const navigate = useNavigate()
     
 
 
@@ -21,11 +22,11 @@ const Register = () => {
         
 
 
-        setError("")
+
         const regExpression = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
         
         if(regExpression.test(password) === false){
-            setError("Must be more than 6 characters, including number, lowercase letter, uppercase letter")
+            errorMsg("Must be more than 6 characters, including number, lowercase letter, uppercase letter")
             return
         }
 
@@ -45,18 +46,22 @@ const Register = () => {
             .catch(error=>{
                 setUser(user)
             })
-            successMsg("User has successfully registered")  
-            form.reset()   
+            successMsg("User has successfully registered")
+            form.reset()
+            navigate("/")
 
         })
         .catch(error=>{
-            errorMsg("Something went wrong...")
+            errorMsg(error.message)
         })
     }
 
 
     return (
         <div>
+            <Helmet>
+                <title>User Register</title>
+            </Helmet>
             <div className='flex justify-center items-center my-10'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">

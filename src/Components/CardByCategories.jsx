@@ -1,6 +1,7 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 
 const CardByCategories = ({ cat }) => {
@@ -11,6 +12,9 @@ const CardByCategories = ({ cat }) => {
 
     return (
         <div className="card bg-base-100 shadow-xl">
+            <Helmet>
+                <title>Book Category</title>
+            </Helmet>
             <figure>
                 <img src={image} className="w-full h-48 object-cover" />
             </figure>

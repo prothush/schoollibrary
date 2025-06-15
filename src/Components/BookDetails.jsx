@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router';
 import StarRatings from 'react-star-ratings';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const BookDetails = () => {
     const book = useLoaderData()
@@ -50,6 +51,9 @@ const BookDetails = () => {
 
     return (
         <div className="p-6 max-w-3xl mx-auto">
+            <Helmet>
+                <title>Book Details</title>
+            </Helmet>
             <img src={book.image} alt="Group" className="w-full h-64 object-cover rounded-lg mb-4" />
             <h1 className="text-4xl font-bold">{book.title}</h1>
             <p className="text-gray-600">Category: {book.category}</p>
@@ -67,7 +71,7 @@ const BookDetails = () => {
             <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_1').showModal()} disabled={quantity == 0 && "disabled"}>Borrow</button>
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
-                    <p className="py-4">Press ESC key to close</p>
+                    <p className="py-4">Press <span className='text-error bold'>ESC</span> key to close</p>
                     <div>
                         <form method="dialog" onSubmit={handleBorrow}>
                             <fieldset className="fieldset">
