@@ -9,13 +9,19 @@ const BorrowedBooks = () => {
 
     const { user } = use(AuthContext)
 
+
     const [borrowedBooks, setborrowedBooks] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/borrow?email=${user.email}`)
+        fetch(`http://localhost:3000/borrow?email=${user.email}`,{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+
+        })
             .then(res => res.json())
             .then(data => setborrowedBooks(data))
-    }, [user.email])
+    }, [user.email, user.accessToken])
 
     const handleReturn = (id, bookId) => {
         Swal.fire({
@@ -47,15 +53,6 @@ const BorrowedBooks = () => {
                     .catch(error => {
                         console.log(error)
                     })
-
-
-
-
-
-
-
-
-
 
             }
         });
