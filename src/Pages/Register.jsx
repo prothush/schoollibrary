@@ -1,7 +1,7 @@
 import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthProvider';
-import { Helmet } from 'react-helmet';
+
 
 const Register = () => {
 
@@ -59,9 +59,9 @@ const Register = () => {
 
     return (
         <div>
-            <Helmet>
+
                 <title>User Register</title>
-            </Helmet>
+
             <div className='flex justify-center items-center my-10'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
@@ -75,7 +75,6 @@ const Register = () => {
                         <input type="text" name="photoUrl" className="input" placeholder="Your Photo URL" required/>
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input" placeholder="Your Password" required/>
-                        <span className='text-red-500 text-xs'>{error}</span>
                         <button type='submit' className="btn btn-neutral mt-4">Register</button>
                     </form>
                     <p className='font-semibold text-center'>Already Have An Account? <Link className='text-secondary' to="/auth/login">Login</Link></p>

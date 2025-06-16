@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -44,9 +43,9 @@ const UpdateBook = () => {
 
     return (
         <div>
-            <Helmet>
+
                 <title>Update Book</title>
-            </Helmet>
+
             <div className="max-w-3xl mx-auto p-6 mt-10 bg-base-100 shadow-md rounded-lg">
                 <h2 className="text-xl md:text-3xl font-bold text-center mb-8">Update Books</h2>
                 <form onSubmit={handleUpdateBook} className="space-y-6">
