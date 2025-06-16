@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from "motion/react"
-import { data, Link } from 'react-router';
+
+import { Link } from 'react-router';
 
 const Categories = () => {
 
@@ -13,11 +13,11 @@ const Categories = () => {
     }, [])
 
     return (
-        <div className="py-12 bg-gray-50">
+        <div className="py-12 bg-gray-50 ">
             <h2 className="text-3xl font-bold text-center mb-8">Explore Book Categories</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-11/12 mx-auto">
                 {categories.map((category, index) => (
-                    <motion.div
+                    <div
                         key={index}
                         whileHover={{ scale: 1.05 }}
                         className="bg-white rounded-2xl shadow-lg overflow-hidden"
@@ -36,7 +36,7 @@ const Categories = () => {
                                 View Books
                             </Link>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

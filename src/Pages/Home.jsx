@@ -6,6 +6,7 @@ import Slider from '../Components/Slider';
 import Categories from '../Components/Categories';
 import { Helmet } from 'react-helmet';
 import LibraryServices from '../Components/LibraryServices';
+import Testimonial from '../Components/Testimonial';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <Slider></Slider>
             <Categories></Categories>
             <LibraryServices></LibraryServices>
+            <Testimonial></Testimonial>
         </div>
     );
 };
