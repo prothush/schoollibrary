@@ -8,6 +8,8 @@ import { Helmet } from 'react-helmet';
 const BookDetails = () => {
     const book = useLoaderData()
     const { user, successMsg, errorMsg } = use(AuthContext)
+    const today= new Date().toISOString().slice(0, 10)
+    console.log(today)
 
     const [isBorrowed, setIsBorrowed] = useState(false)
     const [quantity, setQuantity] = useState(book.quantity)
@@ -36,6 +38,7 @@ const BookDetails = () => {
             email,
             returnDate,
             bookId: book._id,
+            borrowDate: today
         }
         console.log(borrow)
         axios.post("http://localhost:3000/borrow", borrow)
