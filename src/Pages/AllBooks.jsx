@@ -51,8 +51,8 @@ const AllBooks = () => {
 
                 </div>
                 :
-                <div className="overflow-x-auto">
-                    <table className="min-w-full table-auto border border-gray-300">
+                <div>
+                    <table className="min-w-full table-auto border border-gray-300 overflow-x-auto">
                         <thead className="bg-gray-100 text-left">
                             <tr>
                                 <th className="p-3 border-b">Image</th>

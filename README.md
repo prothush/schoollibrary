@@ -4,7 +4,7 @@ A full-stack Library Management System built for a school. The system allows use
 
 ## 🔗 Live Website
 
-[Live Site URL](https://your-live-site-link.com)  
+[Live Site URL](https://schoollibrary.netlify.app/)  
 
 
 ---
