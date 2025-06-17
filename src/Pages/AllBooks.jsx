@@ -9,6 +9,7 @@ const AllBooks = () => {
 
     const books = useLoaderData()
 
+
     const [showAvailable, setShowAvailable] = useState(false)
     const [view, setView] = useState("Card")
 
@@ -27,7 +28,7 @@ const AllBooks = () => {
 
 
     return (
-        <div className="w-11/12 mx-auto px-4 py-6">
+        <div className="w-11/12 mx-auto px-4 py-6 min-h-screen">
 
                 <title>All Books</title>
 

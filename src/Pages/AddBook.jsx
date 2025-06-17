@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { FaBook } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const AddBook = () => {
@@ -17,7 +18,7 @@ const AddBook = () => {
             quantity: convertedQty
         }
 
-        axios.post("http://localhost:3000/books", newBook)
+        axios.post("https://school-library-server.vercel.app/books", newBook)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -41,7 +42,7 @@ const AddBook = () => {
     return (
         <div>
 
-                <title>Add Books</title>
+            <title>Add Books</title>
 
             <div className="max-w-3xl mx-auto p-6 mt-10 bg-base-100 shadow-md rounded-lg">
                 <h2 className="text-xl md:text-3xl font-bold text-center mb-8">Add Books</h2>
@@ -92,6 +93,15 @@ const AddBook = () => {
                     </div>
 
                 </form>
+                <div className="mt-10 p-5 bg-base-200 rounded">
+                    <h3 className="text-xl font-semibold mb-2 flex items-center gap-2"><FaBook></FaBook> Book Content Example</h3>
+                    <p>
+                        <strong>"Into the Shadows"</strong> is a gripping <em>thriller novel</em> that takes readers deep into a world of mystery and suspense. Set in a foggy coastal town, the story follows investigative journalist <strong>Clara Dawson</strong> as she uncovers secrets that were meant to stay buried.
+                    </p>
+                    <p className="mt-2">
+                        With every page, the stakes rise, leading to a shocking conclusion. This novel is ideal for fans of thrillers and mysteries, rated <strong>4.5/5</strong> by early readers.
+                    </p>
+                </div>
             </div>
         </div>
     );

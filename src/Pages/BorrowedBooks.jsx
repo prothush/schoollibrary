@@ -8,13 +8,13 @@ import Swal from 'sweetalert2';
 const BorrowedBooks = () => {
 
     const { user } = use(AuthContext)
-    
+
 
 
     const [borrowedBooks, setborrowedBooks] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/borrow?email=${user.email}`,{
+        fetch(`https://school-library-server.vercel.app/borrow?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -35,7 +35,7 @@ const BorrowedBooks = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/borrow/${id}`, {
+                axios.delete(`https://school-library-server.vercel.app/borrow/${id}`, {
                     data: {
                         bookId
                     }
@@ -65,13 +65,14 @@ const BorrowedBooks = () => {
 
 
     return (
-        <div className="p-4 w-11/12 mx-auto">
+        <div className="p-4 w-11/12 mx-auto min-h-screen">
 
-                <title>Borrowed Books</title>
+            <title>Borrowed Books</title>
 
             <h2 className="text-2xl font-bold mb-4">My Borrowed Books</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {borrowedBooks.map((book) => (
+
                     <div key={book.id} className="card bg-base-100 shadow-md">
                         {book.image && (
                             <figure>

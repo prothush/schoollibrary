@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import Register from './Pages/Register.jsx';
 import MainLayout from './layouts/MainLayout.jsx';
@@ -19,6 +18,8 @@ import BookDetails from './Components/BookDetails.jsx';
 import BorrowedBooks from './Pages/BorrowedBooks.jsx';
 import Error from './Pages/Error.jsx';
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,8 +36,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBooks",
-        loader: ()=>fetch("http://localhost:3000/books"),
-        element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>
+        element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>,
+        loader: ()=>fetch("https://school-library-server.vercel.app/books")
       },
       {
         path: "/borrowedBooks",
@@ -44,17 +45,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateBook/:id",
-        loader: ({params})=>fetch(`http://localhost:3000/books/${params.id}`),
+        loader: ({params})=>fetch(`https://school-library-server.vercel.app/books/${params.id}`),
         element: <PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>
       },
       {
         path: "/category/:name",
-        loader: ({params})=>fetch(`http://localhost:3000/books?category=${params.name}`),
+        loader: ({params})=>fetch(`https://school-library-server.vercel.app/books?category=${params.name}`),
         element: <Category></Category>
       },
       {
         path: "/bookDetails/:id",
-        loader: ({params})=>fetch(`http://localhost:3000/books/${params.id}`),
+        loader: ({params})=>fetch(`https://school-library-server.vercel.app/books/${params.id}`),
         element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>
       },
     ]

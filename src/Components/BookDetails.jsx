@@ -15,7 +15,7 @@ const BookDetails = () => {
     const [quantity, setQuantity] = useState(book.quantity)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/borrow?email=${user.email}&bookId=${book._id}`)
+        axios.get(`https://school-library-server.vercel.app/borrow?email=${user.email}&bookId=${book._id}`)
             .then(res => {
                 setIsBorrowed(res.data.length > 0)
             })
@@ -41,7 +41,7 @@ const BookDetails = () => {
             borrowDate: today
         }
         console.log(borrow)
-        axios.post("http://localhost:3000/borrow", borrow)
+        axios.post("https://school-library-server.vercel.app/borrow", borrow)
             .then(res => {
                 setIsBorrowed(true)
                 setQuantity(quantity - 1)

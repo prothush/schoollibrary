@@ -21,7 +21,7 @@ const UpdateBook = () => {
         
         
 
-        axios.put(`http://localhost:3000/books/${_id}`, updatedBookData)
+        axios.put(`https://school-library-server.vercel.app/books/${_id}`, updatedBookData)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({
