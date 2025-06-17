@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import AllBookCard from '../Components/AllBookCard';
-import { useLoaderData } from 'react-router';
 import TableBody from '../Components/TableBody';
+import { AuthContext } from '../Contexts/AuthProvider';
 
 
 
 const AllBooks = () => {
 
-    const books = useLoaderData()
+    const {user}=use(AuthContext)
+
+    const [books, setBooks]=useState([])
+    useEffect(()=>{
+        fetch("http://localhost:3000/books",{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>setBooks(data))
+    },[])
 
 
     const [showAvailable, setShowAvailable] = useState(false)

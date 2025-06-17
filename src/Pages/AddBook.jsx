@@ -1,10 +1,15 @@
 import axios from 'axios';
-import React from 'react';
+import React, { use } from 'react';
 import { FaBook } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthProvider';
 
 const AddBook = () => {
 
+    const {user}= use(AuthContext)
+
+
+    
 
 
     const handleAddBook = (e) => {
@@ -18,7 +23,12 @@ const AddBook = () => {
             quantity: convertedQty
         }
 
-        axios.post("https://school-library-server.vercel.app/books", newBook)
+        axios.post("http://localhost:3000/books", newBook,{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+
+        })
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

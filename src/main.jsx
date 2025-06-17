@@ -37,7 +37,6 @@ const router = createBrowserRouter([
       {
         path: "/allBooks",
         element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>,
-        loader: ()=>fetch("https://school-library-server.vercel.app/books")
       },
       {
         path: "/borrowedBooks",
@@ -45,17 +44,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateBook/:id",
-        loader: ({params})=>fetch(`https://school-library-server.vercel.app/books/${params.id}`),
         element: <PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>
       },
       {
         path: "/category/:name",
-        loader: ({params})=>fetch(`https://school-library-server.vercel.app/books?category=${params.name}`),
+        loader: ({params})=>fetch(`http://localhost:3000/books/category/${params.name}`),
         element: <Category></Category>
       },
       {
         path: "/bookDetails/:id",
-        loader: ({params})=>fetch(`https://school-library-server.vercel.app/books/${params.id}`),
         element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>
       },
     ]

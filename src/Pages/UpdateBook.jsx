@@ -1,10 +1,30 @@
 import axios from 'axios';
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { use, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthProvider';
 
 const UpdateBook = () => {
-    const book = useLoaderData()
+    const { user } = use(AuthContext)
+    const { id } = useParams()
+    const [book, setBook] = useState("")
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/books/id/${id}`, {
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+
+        })
+            .then(res => res.json())
+            .then(data => setBook(data))
+    }, [id, user.accessToken])
+
+    if(!book?._id){
+        return
+    }
+
+
     const { _id, image, title, quantity, author, category, description, rating } = book
 
 
@@ -12,16 +32,21 @@ const UpdateBook = () => {
         e.preventDefault()
         const form = e.target
         const formData = new FormData(form)
-        const {quantity, ...rest} = Object.fromEntries(formData.entries())
-        const convertedQty= parseInt(quantity)
-        const updatedBookData={
+        const { quantity, ...rest } = Object.fromEntries(formData.entries())
+        const convertedQty = parseInt(quantity)
+        const updatedBookData = {
             ...rest,
-            quantity : convertedQty
+            quantity: convertedQty
         }
-        
-        
 
-        axios.put(`https://school-library-server.vercel.app/books/${_id}`, updatedBookData)
+
+
+        axios.put(`http://localhost:3000/books/${_id}`, updatedBookData, {
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+
+        })
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({
@@ -34,7 +59,7 @@ const UpdateBook = () => {
                 }
             })
             .catch(error => {
-                
+
             })
 
 
@@ -44,7 +69,7 @@ const UpdateBook = () => {
     return (
         <div>
 
-                <title>Update Book</title>
+            <title>Update Book</title>
 
             <div className="max-w-3xl mx-auto p-6 mt-10 bg-base-100 shadow-md rounded-lg">
                 <h2 className="text-xl md:text-3xl font-bold text-center mb-8">Update Books</h2>

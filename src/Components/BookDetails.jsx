@@ -1,25 +1,49 @@
 import React, { use, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useParams } from 'react-router';
 import StarRatings from 'react-star-ratings';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
 
 
 const BookDetails = () => {
-    const book = useLoaderData()
     const { user, successMsg, errorMsg } = use(AuthContext)
+    
+    const {id}= useParams()
+    const [book, setBook]= useState("")
+
+        
     const today= new Date().toISOString().slice(0, 10)
-    console.log(today)
+    
 
     const [isBorrowed, setIsBorrowed] = useState(false)
-    const [quantity, setQuantity] = useState(book.quantity)
+    const [quantity, setQuantity] = useState(0)
+     useEffect(()=>{
+        setQuantity(book?.quantity)
+     },[book?.quantity, setQuantity]) 
+
+
+    useEffect(()=>{
+        fetch(`http://localhost:3000/books/id/${id}`,{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>setBook(data))
+    },[id, user.accessToken])
+    
+
 
     useEffect(() => {
-        axios.get(`https://school-library-server.vercel.app/borrow?email=${user.email}&bookId=${book._id}`)
+        axios.get(`http://localhost:3000/borrow?email=${user.email}&bookId=${book._id}`,{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
             .then(res => {
                 setIsBorrowed(res.data.length > 0)
             })
-    }, [user.email, book._id])
+    }, [user.email, book._id, user.accessToken])
 
 
 
@@ -40,15 +64,19 @@ const BookDetails = () => {
             bookId: book._id,
             borrowDate: today
         }
-        console.log(borrow)
-        axios.post("https://school-library-server.vercel.app/borrow", borrow)
+        axios.post("http://localhost:3000/borrow", borrow,{
+            headers: {
+                authorization: `Bearer ${user.accessToken}`
+            }
+
+        })
             .then(res => {
                 setIsBorrowed(true)
                 setQuantity(quantity - 1)
                 successMsg("Successfully borrowed this book")
             })
             .catch(error => {
-                console.log(error)
+
             })
     }
 
@@ -57,19 +85,14 @@ const BookDetails = () => {
 
                 <title>Book Details</title>
 
-            <img src={book.image} alt="Group" className="w-full h-64 object-cover rounded-lg mb-4" />
+            <img src={book.image} alt="" className="w-full h-64 object-cover rounded-lg mb-4" />
             <h1 className="text-4xl font-bold">{book.title}</h1>
             <p className="text-gray-600">Category: {book.category}</p>
             <p className="mt-4">Author: {book.author}</p>
             <p><strong>Description:</strong> {book.description}</p>
             <p><strong>Quantity:</strong> {quantity}</p>
-            <div> <strong>Ratings: </strong>
-                <StarRatings
-                    rating={parseInt(book.rating)}
-                    starDimension="30px"
-                    starSpacing="1px"
-                    starRatedColor="yellow"
-                />
+            <div> <strong>Ratings: {book.rating}</strong>
+                
             </div>
             <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_1').showModal()} disabled={quantity == 0 && "disabled"}>Borrow</button>
             <dialog id="my_modal_1" className="modal">

@@ -7,7 +7,7 @@ import Loading from '../Components/Loading';
 const MainLayout = () => {
 
     const {state}= useNavigation()
-    console.log(state)
+
 
     return (
         <div>

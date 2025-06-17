@@ -14,7 +14,7 @@ const BorrowedBooks = () => {
     const [borrowedBooks, setborrowedBooks] = useState([])
 
     useEffect(() => {
-        fetch(`https://school-library-server.vercel.app/borrow?email=${user.email}`, {
+        fetch(`http://localhost:3000/borrow?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -35,9 +35,13 @@ const BorrowedBooks = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://school-library-server.vercel.app/borrow/${id}`, {
+                axios.delete(`http://localhost:3000/borrow/${id}`, {
                     data: {
-                        bookId
+                        bookId,
+                        email: user.email
+                    },
+                    headers: {
+                        authorization: `Bearer ${user.accessToken}`
                     }
                 })
                     .then(res => {
@@ -52,7 +56,7 @@ const BorrowedBooks = () => {
 
                     })
                     .catch(error => {
-                        console.log(error)
+          
                     })
 
             }
