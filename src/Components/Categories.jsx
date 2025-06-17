@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { Link } from 'react-router';
 
@@ -14,10 +15,10 @@ const Categories = () => {
 
     return (
         <div className="py-12 bg-gray-50 ">
-            <h2 className="text-3xl font-bold text-center mb-8">Explore Book Categories</h2>
+            <motion.h2 className="text-3xl font-bold text-center mb-8" initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>Explore Book Categories</motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-11/12 mx-auto">
                 {categories.map((category, index) => (
-                    <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <motion.div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1 }} viewport={{ once: true }}>
                         <img
                             src={category.image}
                             alt={category.name}
@@ -32,7 +33,7 @@ const Categories = () => {
                                 View Books
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Loading from '../Components/Loading';
 
 
 
@@ -12,16 +13,20 @@ const BorrowedBooks = () => {
 
 
     const [borrowedBooks, setborrowedBooks] = useState([])
+    const [loading, setLoading]= useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/borrow?email=${user.email}`, {
+        fetch(`https://school-library-server.vercel.app/borrow?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
 
         })
             .then(res => res.json())
-            .then(data => setborrowedBooks(data))
+            .then(data => {
+                setborrowedBooks(data)
+                setLoading(false)
+            })
     }, [user.email, user.accessToken])
 
     const handleReturn = (id, bookId) => {
@@ -35,7 +40,7 @@ const BorrowedBooks = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/borrow/${id}`, {
+                axios.delete(`https://school-library-server.vercel.app/borrow/${id}`, {
                     data: {
                         bookId,
                         email: user.email
@@ -61,12 +66,11 @@ const BorrowedBooks = () => {
 
             }
         });
-
-
     }
 
-
-
+    if(loading){
+        return <Loading></Loading>
+    }
 
     return (
         <div className="p-4 w-11/12 mx-auto min-h-screen">
@@ -77,7 +81,7 @@ const BorrowedBooks = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {borrowedBooks.map((book) => (
 
-                    <div key={book.id} className="card bg-base-100 shadow-md">
+                    <div key={book._id} className="card bg-base-100 shadow-md">
                         {book.image && (
                             <figure>
                                 <img src={book.image} alt={book.title} className="w-full h-48 object-cover" />

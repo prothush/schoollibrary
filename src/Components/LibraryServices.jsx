@@ -1,13 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaBookReader, FaCalendarAlt, FaLaptop, FaSearch, FaUsers, FaWifi } from 'react-icons/fa';
 
 const LibraryServices = () => {
 
     return (
         <div>
-            <div className="py-10 bg-base-100 w-11/12 mx-auto">
+            <motion.div
+            initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1 }} viewport={{ once: true }}
+             className="py-10 bg-base-100 w-11/12 mx-auto">
                 <div className="mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-bold mb-8">🎯 Our Library Services</h2>
+                    <motion.h2 className="text-3xl font-bold mb-8" initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>🎯 Our Library Services</motion.h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                         <div className="card bg-base-200 shadow-sm p-6">
@@ -42,7 +45,7 @@ const LibraryServices = () => {
                         </div>    
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

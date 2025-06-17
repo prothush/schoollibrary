@@ -2,26 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 const Testimonial = () => {
 
-    const testimonials = [
-        {
-            name: 'Sara Ahmed',
-            message: 'This library is a treasure! I love the collection and the quiet reading spaces.',
-            photo: 'https://randomuser.me/api/portraits/women/65.jpg',
-            role: 'Student, Literature',
-        },
-        {
-            name: 'Rahim Uddin',
-            message: 'The online book borrowing system is incredibly smooth and efficient!',
-            photo: 'https://randomuser.me/api/portraits/men/44.jpg',
-            role: 'Researcher, History',
-        },
-        {
-            name: 'Lamia Binte',
-            message: 'Great experience! I’ve attended many helpful workshops organized here.',
-            photo: 'https://randomuser.me/api/portraits/women/72.jpg',
-            role: 'Teacher, Science',
-        },
-    ];
+   
 
 
     return (

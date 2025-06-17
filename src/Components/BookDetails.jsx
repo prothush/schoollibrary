@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import StarRatings from 'react-star-ratings';
 import { AuthContext } from '../Contexts/AuthProvider';
 import axios from 'axios';
+import Loading from './Loading';
 
 
 const BookDetails = () => {
@@ -10,6 +11,7 @@ const BookDetails = () => {
     
     const {id}= useParams()
     const [book, setBook]= useState("")
+    const [loading, setLoading]= useState(true)
 
         
     const today= new Date().toISOString().slice(0, 10)
@@ -23,19 +25,24 @@ const BookDetails = () => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/books/id/${id}`,{
+        fetch(`https://school-library-server.vercel.app/books/id/${id}`,{
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
         })
         .then(res=>res.json())
-        .then(data=>setBook(data))
+        .then(data=>{
+            setBook(data)
+            setLoading(false)
+        })
+
     },[id, user.accessToken])
     
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/borrow?email=${user.email}&bookId=${book._id}`,{
+
+        axios.get(`https://school-library-server.vercel.app/borrow?email=${user.email}&bookId=${book._id}`,{
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -64,7 +71,7 @@ const BookDetails = () => {
             bookId: book._id,
             borrowDate: today
         }
-        axios.post("http://localhost:3000/borrow", borrow,{
+        axios.post("https://school-library-server.vercel.app/borrow", borrow,{
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -78,6 +85,10 @@ const BookDetails = () => {
             .catch(error => {
 
             })
+    }
+
+    if(loading){
+        return <Loading></Loading>
     }
 
     return (

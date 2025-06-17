@@ -2,23 +2,34 @@ import React, { use, useEffect, useState } from 'react';
 import AllBookCard from '../Components/AllBookCard';
 import TableBody from '../Components/TableBody';
 import { AuthContext } from '../Contexts/AuthProvider';
+import Loading from '../Components/Loading';
 
 
 
 const AllBooks = () => {
 
-    const {user}=use(AuthContext)
+    const { user } = use(AuthContext)
 
-    const [books, setBooks]=useState([])
-    useEffect(()=>{
-        fetch("http://localhost:3000/books",{
+    const [books, setBooks] = useState([])
+    const [loading, setLoading]= useState(true)
+
+
+    useEffect(() => {
+
+        fetch("https://school-library-server.vercel.app/books", {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
         })
-        .then(res=>res.json())
-        .then(data=>setBooks(data))
-    },[])
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data)
+                setLoading(false)
+            })
+
+
+
+    }, [user.accessToken])
 
 
     const [showAvailable, setShowAvailable] = useState(false)
@@ -34,6 +45,11 @@ const AllBooks = () => {
         setView(e.target.value)
     }
 
+    if(loading){
+        return <Loading></Loading>
+
+    }
+
 
 
 
@@ -41,7 +57,7 @@ const AllBooks = () => {
     return (
         <div className="w-11/12 mx-auto px-4 py-6 min-h-screen">
 
-                <title>All Books</title>
+            <title>All Books</title>
 
             <h1 className="text-xl md:text-3xl font-bold mb-6 text-center">All Books</h1>
             <div className='flex flex-col md:flex-row justify-between gap-5 my-5'>
@@ -82,9 +98,9 @@ const AllBooks = () => {
                     </table>
                 </div>
 
-
             }
         </div>
+
     );
 };
 

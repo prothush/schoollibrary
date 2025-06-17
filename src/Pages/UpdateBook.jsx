@@ -3,6 +3,7 @@ import React, { use, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthProvider';
+import Loading from '../Components/Loading';
 
 const UpdateBook = () => {
     const { user } = use(AuthContext)
@@ -10,7 +11,7 @@ const UpdateBook = () => {
     const [book, setBook] = useState("")
 
     useEffect(() => {
-        fetch(`http://localhost:3000/books/id/${id}`, {
+        fetch(`https://school-library-server.vercel.app/books/id/${id}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -21,7 +22,7 @@ const UpdateBook = () => {
     }, [id, user.accessToken])
 
     if(!book?._id){
-        return
+        return <Loading></Loading>
     }
 
 
@@ -41,7 +42,7 @@ const UpdateBook = () => {
 
 
 
-        axios.put(`http://localhost:3000/books/${_id}`, updatedBookData, {
+        axios.put(`https://school-library-server.vercel.app/books/${_id}`, updatedBookData, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }

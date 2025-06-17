@@ -23,7 +23,7 @@ const AddBook = () => {
             quantity: convertedQty
         }
 
-        axios.post("http://localhost:3000/books", newBook,{
+        axios.post("https://school-library-server.vercel.app/books", newBook,{
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
