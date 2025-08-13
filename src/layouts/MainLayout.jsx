@@ -11,10 +11,10 @@ const MainLayout = () => {
 
     return (
         <div>
-            <nav className='w-11/12 mx-auto'>
+            <nav className='mx-auto mb-5 bg-[#006356] text-white fixed top-0 left-0 right-0 z-10'>
                 <Navbar></Navbar>
             </nav>
-            <main>
+            <main className='my-20'>
                 {state === "loading" ? <Loading></Loading> : <Outlet></Outlet>}
                 
             </main>

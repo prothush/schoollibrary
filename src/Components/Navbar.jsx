@@ -17,15 +17,23 @@ const Navbar = () => {
   }
 
   const links = <>
-    <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/allBooks">All Books</NavLink></li>
-    <li><NavLink to="/addBooks">Add Books</NavLink></li>
-    <li><NavLink to="/borrowedBooks">Borrowed Books</NavLink></li>
+    <li><NavLink to="/"
+    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    >Home</NavLink></li>
+    <li><NavLink to="/allBooks"
+    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    >All Books</NavLink></li>
+    <li><NavLink to="/addBooks"
+    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    >Add Books</NavLink></li>
+    <li><NavLink to="/borrowedBooks"
+    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    >Borrowed Books</NavLink></li>
   </>
 
   return (
 
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar w-11/12 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,7 +45,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">School Library</a>
+        <Link to="/" className="font-bold text-xl">School Library</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -76,8 +84,8 @@ const Navbar = () => {
             <>
               {
                 loading ? <span className="loading loading-spinner loading-xl"></span> : <>
-                  <Link to="/auth/login"><button className="btn btn-neutral btn-sm md:btn-md">Login</button></Link>
-                  <Link to="/auth/register"><button className="btn btn-primary btn-sm md:btn-md">Register</button></Link>
+                  <Link to="/auth/login"><button className="btn btn-outline border-[#D3FFBE] hover:bg-[#D3FFBE] btn-sm md:btn-md">Login</button></Link>
+                  <Link to="/auth/register"><button className="btn btn-outline border-[#D3FFBE] hover:bg-[#D3FFBE] btn-sm md:btn-md">Register</button></Link>
                 </>
               }
 
