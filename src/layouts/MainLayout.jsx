@@ -11,7 +11,7 @@ const MainLayout = () => {
 
     return (
         <div>
-            <nav className='mx-auto mb-5 bg-[#006356] text-white fixed top-0 left-0 right-0 z-10'>
+            <nav className='mx-auto mb-5 bg-[#00927F] text-white fixed top-0 left-0 right-0 z-50'>
                 <Navbar></Navbar>
             </nav>
             <main className='my-20'>

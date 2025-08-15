@@ -19,7 +19,7 @@ const FeaturedProducts = () => {
         {products.map((product) => (
           <div
             key={product.id}
-            className="card bg-base-100 shadow-xl border hover:shadow-2xl transition-shadow"
+            className="card bg-[#00927F]/50 shadow-xl border border-[#D3FFBE] hover:shadow-2xl transition-shadow"
           >
             <figure className="px-4 pt-4">
               <img
@@ -33,11 +33,11 @@ const FeaturedProducts = () => {
                 {product.name}
               </h3>
               <p className="text-gray-600">{product.description}</p>
-              <p className="text-lg font-bold text-primary">
+              <p className="text-lg font-bold">
                 ${product.price}
               </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary btn-sm">
+                <button className="btn bg-[#00927F] text-white btn-sm btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000]">
                   View Details
                 </button>
               </div>

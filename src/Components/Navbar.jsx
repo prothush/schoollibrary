@@ -18,16 +18,16 @@ const Navbar = () => {
 
   const links = <>
     <li><NavLink to="/"
-    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
+    className={({isActive})=> isActive ? "text-[#D3FFBE]" : ""}
     >Home</NavLink></li>
     <li><NavLink to="/allBooks"
-    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
+    className={({isActive})=> isActive ? "text-[#D3FFBE]" : ""}
     >All Products</NavLink></li>
     <li><NavLink to="/addBooks"
-    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
+    className={({isActive})=> isActive ? "text-[#D3FFBE]" : ""}
     >Add Product</NavLink></li>
     <li><NavLink to="/borrowedBooks"
-    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
+    className={({isActive})=> isActive ? "text-[#D3FFBE]" : ""}
     >Borrowed Books</NavLink></li>
   </>
 
@@ -84,8 +84,8 @@ const Navbar = () => {
             <>
               {
                 loading ? <span className="loading loading-spinner loading-xl"></span> : <>
-                  <Link to="/auth/login"><button className="btn btn-outline border-[#00E958] hover:bg-[#00E958]/50 btn-sm md:btn-md">Login</button></Link>
-                  <Link to="/auth/register"><button className="btn btn-outline border-[#00E958] hover:bg-[#00E958]/50 btn-sm md:btn-md">Register</button></Link>
+                  <Link to="/auth/login"><button className="btn btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000] btn-sm md:btn-md">Login</button></Link>
+                  <Link to="/auth/register"><button className="btn btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000] btn-sm md:btn-md">Register</button></Link>
                 </>
               }
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const AllBookCard = ({ book }) => {
 
   return (
-    <div className="card bg-[#D3FFBE] shadow-xl">
+    <div className="card bg-[#00927F]/50 shadow-xl">
       <figure>
         <img src={book.image} className="w-full h-40 object-cover" />
       </figure>
