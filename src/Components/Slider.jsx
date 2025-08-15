@@ -28,10 +28,10 @@ const Slider = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 flex items-center justify-center">
                             <div className="text-center text-white space-y-5 px-5 max-w-4xl">
                                 <h2 className="text-2xl md:text-5xl font-bold">
-                                    Welcome to the Heart of Learning
+                                    Our Featured Picks
                                 </h2>
                                 <p className="text-lg md:text-xl">
-                                    Our school library is more than just books — it's a hub for curiosity, imagination, and discovery. Whether you're researching a project or simply exploring new worlds, there's something here for every student.
+                                    Handpicked products we love the most – explore top-quality items at the best prices.
                                 </p>
                             </div>
                         </div>
@@ -48,10 +48,10 @@ const Slider = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 flex items-center justify-center">
                             <div className="text-center text-white space-y-5 px-5 max-w-4xl">
                                 <h2 className="text-2xl md:text-5xl font-bold">
-                                    A Space to Read, Reflect, and Grow
+                                    Trending Now
                                 </h2>
                                 <p className="text-lg md:text-xl">
-                                    Quiet corners, comfortable seating, and shelves filled with knowledge make our library the perfect place to think deeply, read widely, and grow intellectually.
+                                    See what’s hot and in demand. Don’t miss out on our most popular products!
                                 </p>
                             </div>
                         </div>
@@ -68,10 +68,10 @@ const Slider = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 flex items-center justify-center">
                             <div className="text-center text-white space-y-5 px-5 max-w-4xl">
                                 <h2 className="text-2xl md:text-5xl font-bold">
-                                    Tools for Academic Success
+                                    Top Rated Products
                                 </h2>
                                 <p className="text-lg md:text-xl">
-                                    From digital resources to study guides and librarian support, the school library provides everything you need to succeed in your academic journey.
+                                    Customer favorites with the highest ratings – proven and trusted.
                                 </p>
                             </div>
                         </div>

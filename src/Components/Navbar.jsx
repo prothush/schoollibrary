@@ -18,16 +18,16 @@ const Navbar = () => {
 
   const links = <>
     <li><NavLink to="/"
-    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
     >Home</NavLink></li>
     <li><NavLink to="/allBooks"
-    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
     >All Books</NavLink></li>
     <li><NavLink to="/addBooks"
-    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
     >Add Books</NavLink></li>
     <li><NavLink to="/borrowedBooks"
-    className={({isActive})=> isActive ? "bg-[#00927F]" : ""}
+    className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
     >Borrowed Books</NavLink></li>
   </>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link to="/" className="font-bold text-xl">School Library</Link>
+        <Link to="/" className="font-bold text-xl">Sort & Shop</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -84,8 +84,8 @@ const Navbar = () => {
             <>
               {
                 loading ? <span className="loading loading-spinner loading-xl"></span> : <>
-                  <Link to="/auth/login"><button className="btn btn-outline border-[#D3FFBE] hover:bg-[#D3FFBE] btn-sm md:btn-md">Login</button></Link>
-                  <Link to="/auth/register"><button className="btn btn-outline border-[#D3FFBE] hover:bg-[#D3FFBE] btn-sm md:btn-md">Register</button></Link>
+                  <Link to="/auth/login"><button className="btn btn-outline border-[#00E958] hover:bg-[#00E958]/50 btn-sm md:btn-md">Login</button></Link>
+                  <Link to="/auth/register"><button className="btn btn-outline border-[#00E958] hover:bg-[#00E958]/50 btn-sm md:btn-md">Register</button></Link>
                 </>
               }
 
