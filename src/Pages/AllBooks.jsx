@@ -16,11 +16,7 @@ const AllBooks = () => {
 
     useEffect(() => {
 
-        fetch("https://school-library-server.vercel.app/books", {
-            headers: {
-                authorization: `Bearer ${user.accessToken}`
-            }
-        })
+        fetch("http://localhost:3000/books")
             .then(res => res.json())
             .then(data => {
                 setBooks(data)
@@ -29,7 +25,7 @@ const AllBooks = () => {
 
 
 
-    }, [user.accessToken])
+    })
 
 
     const [showAvailable, setShowAvailable] = useState(false)
@@ -39,10 +35,6 @@ const AllBooks = () => {
 
     const handleToggleBook = () => {
         setShowAvailable(!showAvailable)
-    }
-
-    const handleView = (e) => {
-        setView(e.target.value)
     }
 
     if(loading){
@@ -57,48 +49,16 @@ const AllBooks = () => {
     return (
         <div className="w-11/12 mx-auto px-4 py-6 min-h-screen">
 
-            <title>All Books</title>
+            <title>All Products</title>
 
-            <h1 className="text-xl md:text-3xl font-bold mb-6 text-center">All Books</h1>
-            <div className='flex flex-col md:flex-row justify-between gap-5 my-5'>
-                <button onClick={handleToggleBook} className='btn btn-primary'>Show {showAvailable ? "All" : "Available"} Books</button>
+            <h1 className="text-xl md:text-3xl font-bold mb-6 text-center">All Products</h1>
 
-                <select defaultValue="Select View" className="select" onChange={handleView}>
-                    <option disabled={true}>Select View</option>
-                    <option>Card</option>
-                    <option>Table</option>
-                </select>
-            </div>
-
-            {view === "Card" ?
                 <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
                     {filterBooks.map(book => <AllBookCard key={book._id} book={book} view={view}></AllBookCard>)}
-
-
-                </div>
-                :
-                <div>
-                    <table className="min-w-full table-auto border border-gray-300 overflow-x-auto">
-                        <thead className="bg-gray-100 text-left">
-                            <tr>
-                                <th className="p-3 border-b">Image</th>
-                                <th className="p-3 border-b">Title</th>
-                                <th className="p-3 border-b">Author</th>
-                                <th className="p-3 border-b">Category</th>
-                                <th className="p-3 border-b">Description</th>
-                                <th className="p-3 border-b">Rating</th>
-                                <th className="p-3 border-b">Quantity</th>
-                                <th className="p-3 border-b">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filterBooks.map(book => <TableBody key={book._id} book={book} view={view}></TableBody>)}
-                        </tbody>
-                    </table>
                 </div>
 
-            }
+
         </div>
 
     );

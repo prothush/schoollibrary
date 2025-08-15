@@ -11,7 +11,7 @@ const UpdateBook = () => {
     const [book, setBook] = useState("")
 
     useEffect(() => {
-        fetch(`https://school-library-server.vercel.app/books/id/${id}`, {
+        fetch(`http://localhost:3000/books/id/${id}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -42,7 +42,7 @@ const UpdateBook = () => {
 
 
 
-        axios.put(`https://school-library-server.vercel.app/books/${_id}`, updatedBookData, {
+        axios.put(`http://localhost:3000/books/${_id}`, updatedBookData, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }

@@ -22,10 +22,10 @@ const Navbar = () => {
     >Home</NavLink></li>
     <li><NavLink to="/allBooks"
     className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
-    >All Books</NavLink></li>
+    >All Products</NavLink></li>
     <li><NavLink to="/addBooks"
     className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
-    >Add Books</NavLink></li>
+    >Add Product</NavLink></li>
     <li><NavLink to="/borrowedBooks"
     className={({isActive})=> isActive ? "bg-[#00E958]/50" : ""}
     >Borrowed Books</NavLink></li>
