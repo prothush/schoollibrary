@@ -6,6 +6,7 @@ import Slider from '../Components/Slider';
 import Categories from '../Components/Categories';
 import LibraryServices from '../Components/LibraryServices';
 import Testimonial from '../Components/Testimonial';
+import FeaturedProducts from '../Components/FeaturedProducts';
 
 const Home = () => {
     return (
@@ -15,9 +16,8 @@ const Home = () => {
                 <title>Home</title>
 
             <Slider></Slider>
-            <Categories></Categories>
-            <LibraryServices></LibraryServices>
-            <Testimonial></Testimonial>
+            <FeaturedProducts></FeaturedProducts>
+
         </div>
     );
 };

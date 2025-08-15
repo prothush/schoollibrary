@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Stylish Watch",
+    "description": "Elegant and modern design.",
+    "price": 120,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+  },
+  {
+    "id": 2,
+    "name": "Leather Backpack",
+    "description": "Perfect for daily use or travel.",
+    "price": 85,
+    "image": "https://images.unsplash.com/photo-1580910051074-7a8b1b4eaa1d"
+  },
+  {
+    "id": 3,
+    "name": "Wireless Headphones",
+    "description": "Crystal clear sound and comfort.",
+    "price": 150,
+    "image": "https://images.unsplash.com/photo-1585386959984-a41552231693"
+  },
+  {
+    "id": 4,
+    "name": "Running Shoes",
+    "description": "Lightweight and durable.",
+    "price": 95,
+    "image": "https://images.unsplash.com/photo-1528701800489-20be7c6c4d41"
+  }
+]
