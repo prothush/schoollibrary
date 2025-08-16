@@ -17,6 +17,8 @@ import Category from './Components/Category.jsx';
 import BookDetails from './Components/BookDetails.jsx';
 import BorrowedBooks from './Pages/BorrowedBooks.jsx';
 import Error from './Pages/Error.jsx';
+import ContactUs from './Components/ContactUs.jsx';
+import HowItWorks from './Components/HowItWorks.jsx';
 
 
 
@@ -39,8 +41,12 @@ const router = createBrowserRouter([
         element: <AllBooks></AllBooks>,
       },
       {
-        path: "/borrowedBooks",
-        element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>
+      },
+      {
+        path: "/howItWorks",
+        element: <HowItWorks></HowItWorks>
       },
       {
         path: "/updateBook/:id",

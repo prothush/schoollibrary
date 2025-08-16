@@ -84,7 +84,7 @@ const AddBook = () => {
                         <input name="price" type="number" className="input input-bordered w-full" required />
                     </div>
                     <div className="pt-4">
-                        <button type="submit" className="btn btn-primary w-full">Add Products</button>
+                        <button type="submit" className="btn bg-[#00927F] text-white btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000] w-full">Add Products</button>
                     </div>
 
                 </form>
