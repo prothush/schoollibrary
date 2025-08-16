@@ -31,12 +31,18 @@ const Navbar = () => {
     <li><NavLink to="/allBooks"
       className={({ isActive }) => isActive ? "text-[#D3FFBE]" : ""}
     >All Products</NavLink></li>
-    <li><NavLink to="/addBooks"
-      className={({ isActive }) => isActive ? "text-[#D3FFBE]" : ""}
-    >Add Product</NavLink></li>
-    <li><NavLink to="/contactUs"
-      className={({ isActive }) => isActive ? "text-[#D3FFBE]" : ""}
-    >Contact Us</NavLink></li>
+    {
+      user &&
+      <>
+        <li><NavLink to="/addBooks"
+          className={({ isActive }) => isActive ? "text-[#D3FFBE]" : ""}
+        >Add Product</NavLink></li>
+        <li><NavLink to="/contactUs"
+          className={({ isActive }) => isActive ? "text-[#D3FFBE]" : ""}
+        >Contact Us</NavLink></li>
+      </>
+    }
+
     <li><NavLink to="/howItWorks"
       className={({ isActive }) => isActive ? "text-[#D3FFBE]" : ""}
     >How It Works</NavLink></li>
@@ -52,7 +58,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-[#00927F] text-white  rounded-box z-1 mt-3 w-52 p-2 shadow">
             {links}
           </ul>
         </div>

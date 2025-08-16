@@ -22,7 +22,11 @@ const Newsletter = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="input input-bordered w-full sm:w-96 text-black rounded-xl shadow-md"
+            className="input input-bordered w-full sm:w-96 rounded-xl shadow-md 
+             text-gray-900 dark:text-white 
+             bg-white dark:bg-gray-800 
+             border-gray-300 dark:border-gray-600 
+             placeholder-gray-500 dark:placeholder-gray-400"
             required
           />
           <button

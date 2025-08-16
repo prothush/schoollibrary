@@ -38,11 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBooks",
-        element: <AllBooks></AllBooks>,
+        element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>,
       },
       {
         path: "/contactUs",
-        element: <ContactUs></ContactUs>
+        element: <PrivateRoute><ContactUs></ContactUs></PrivateRoute>
       },
       {
         path: "/howItWorks",

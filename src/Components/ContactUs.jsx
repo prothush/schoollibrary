@@ -41,18 +41,30 @@ const ContactUs = () => {
             <input
               type="text"
               placeholder="Your Name"
-              className="input input-bordered w-full placeholder-gray-500 dark:placeholder-gray-300"
+              className="input input-bordered w-full rounded-xl shadow-md 
+             text-gray-900 dark:text-white 
+             bg-white dark:bg-gray-800 
+             border-gray-300 dark:border-gray-600 
+             placeholder-gray-500 dark:placeholder-gray-400"
               required
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="input input-bordered w-full placeholder-gray-500 dark:placeholder-gray-300"
+              className="input input-bordered w-full rounded-xl shadow-md 
+             text-gray-900 dark:text-white 
+             bg-white dark:bg-gray-800 
+             border-gray-300 dark:border-gray-600 
+             placeholder-gray-500 dark:placeholder-gray-400"
               required
             />
             <textarea
               placeholder="Your Message"
-              className="textarea textarea-bordered w-full placeholder-gray-500 dark:placeholder-gray-300"
+              className="textarea textarea-bordered w-full rounded-xl shadow-md 
+             text-gray-900 dark:text-white 
+             bg-white dark:bg-gray-800 
+             border-gray-300 dark:border-gray-600 
+             placeholder-gray-500 dark:placeholder-gray-400"
               rows="4"
               required
             ></textarea>
