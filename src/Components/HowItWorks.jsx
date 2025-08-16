@@ -1,6 +1,6 @@
-// src/components/HowItWorks.jsx
+
 import { motion } from "framer-motion";
-import { Search, Filter, ShoppingCart, CreditCard } from "lucide-react"; // npm i lucide-react
+import { Search, Filter, ShoppingCart, CreditCard } from "lucide-react";
 
 const steps = [
   {
@@ -39,14 +39,13 @@ const HowItWorks = () => {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto text-center px-6"
       >
-        {/* Title */}
+
         <h2 className="text-3xl md:text-4xl font-bold mb-4">🛍️ How It Works</h2>
         <p className="text-lg text-gray-600 mb-10">
           Shopping with <span className="font-semibold text-[#009A81]">Sort & Shop</span> is quick and easy.  
           Just follow these four simple steps!
         </p>
 
-        {/* Steps */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
             <motion.div
