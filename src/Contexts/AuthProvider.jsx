@@ -4,53 +4,62 @@ import { auth } from '../firebase/firebase.init';
 import { toast } from 'react-toastify';
 
 
-export const AuthContext= createContext()
+export const AuthContext = createContext()
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
     const provider = new GoogleAuthProvider();
 
-    const [user, setUser]= useState("")
-    const [loading, setLoading]= useState(true)
+    const [user, setUser] = useState("")
+    const [loading, setLoading] = useState(true)
     const successMsg = (msg) => toast.success(msg);
     const errorMsg = (msg) => toast.error(msg);
 
-    const googleSignIn= ()=>{
+    const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light")
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme)
+
+    }, [theme])
+
+
+
+    const googleSignIn = () => {
         return signInWithPopup(auth, provider)
     }
 
-    const createUser= (email, password)=>{
+    const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const loginUser= (email, password)=>{
+    const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const updateUser= (updatedData)=>{
+    const updateUser = (updatedData) => {
         return updateProfile(auth.currentUser, updatedData)
     }
 
-    const userLogout= ()=>{
+    const userLogout = () => {
         return signOut(auth)
     }
 
 
 
-    useEffect(()=>{
-       const unsubscribe= onAuthStateChanged(auth, ((currentUser)=>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, ((currentUser) => {
             setUser(currentUser)
             setLoading(false)
         }))
-        return ()=>{
+        return () => {
             unsubscribe()
         }
-    },[])
+    }, [])
 
 
 
 
-    const userInfo={
+    const userInfo = {
         user,
         setUser,
         loading,
@@ -60,7 +69,9 @@ const AuthProvider = ({children}) => {
         userLogout,
         googleSignIn,
         successMsg,
-        errorMsg
+        errorMsg,
+        theme,
+        setTheme
     }
 
 

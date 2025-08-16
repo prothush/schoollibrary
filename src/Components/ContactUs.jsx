@@ -12,7 +12,6 @@ const ContactUs = () => {
         viewport={{ once: true }}
         className="bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 rounded-2xl shadow-lg p-10 text-white"
       >
-        {/* Title */}
         <h2 className="text-3xl md:text-4xl font-bold text-center drop-shadow-lg">
           📞 Contact Us
         </h2>
@@ -38,22 +37,22 @@ const ContactUs = () => {
           </div>
 
 
-          <form className="space-y-4 bg-white p-6 rounded-xl shadow-md text-black">
+          <form className="space-y-4 bg-white p-6 rounded-xl shadow-md">
             <input
               type="text"
               placeholder="Your Name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full placeholder-gray-500 dark:placeholder-gray-300"
               required
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full placeholder-gray-500 dark:placeholder-gray-300"
               required
             />
             <textarea
               placeholder="Your Message"
-              className="textarea textarea-bordered w-full"
+              className="textarea textarea-bordered w-full placeholder-gray-500 dark:placeholder-gray-300"
               rows="4"
               required
             ></textarea>
