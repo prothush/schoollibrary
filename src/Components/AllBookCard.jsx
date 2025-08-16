@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const AllBookCard = ({ book }) => {
 
   return (
-    <div className="card bg-[#00927F]/50 shadow-xl">
+    <div className="card bg-[#00927F]/50 shadow-xl border border-[#D3FFBE]">
       <figure>
         <img src={book.image} className="w-full h-40 object-cover" />
       </figure>
@@ -21,7 +21,7 @@ const AllBookCard = ({ book }) => {
           <p><strong>Price: {book.price}</strong> </p>
         </div>
         <div className="card-actions justify-end mt-4">
-          <Link to={`/bookDetails/${book._id}`}><button className='btn btn-secondary'>Details</button></Link>
+          <Link to={`/bookDetails/${book._id}`}><button className='btn bg-[#00927F] text-white btn-sm btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000]'>Details</button></Link>
         </div>
       </div>
     </div>

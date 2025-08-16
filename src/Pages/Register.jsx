@@ -75,9 +75,9 @@ const Register = () => {
                         <input type="text" name="photoUrl" className="input" placeholder="Your Photo URL" required/>
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input" placeholder="Your Password" required/>
-                        <button type='submit' className="btn btn-neutral mt-4">Register</button>
+                        <button type='submit' className="btn bg-[#00927F] text-white btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000] mt-4">Register</button>
                     </form>
-                    <p className='font-semibold text-center'>Already Have An Account? <Link className='text-secondary' to="/auth/login">Login</Link></p>
+                    <p className='font-semibold text-center'>Already Have An Account? <Link className='text-[#009A81]' to="/auth/login">Login</Link></p>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import Testimonial from '../Components/Testimonial';
 import FeaturedProducts from '../Components/FeaturedProducts';
 import SalesPromotion from '../Components/SalesPromotion';
 import Reviews from '../Components/Reviews';
+import Newsletter from '../Components/Newsletter';
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ const Home = () => {
             <FeaturedProducts></FeaturedProducts>
             <SalesPromotion></SalesPromotion>
             <Reviews></Reviews>
+            <Newsletter></Newsletter>
 
         </div>
     );

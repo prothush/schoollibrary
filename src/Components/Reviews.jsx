@@ -1,7 +1,6 @@
-// src/components/Reviews.jsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star } from "lucide-react"; // npm i lucide-react framer-motion
+import { Star } from "lucide-react"; 
 
 const reviews = [
   {
@@ -36,8 +35,8 @@ const Reviews = () => {
   const review = reviews[index];
 
   return (
-    // 🔥 Changed background from bg-base-200 to gradient
-    <section className="my-16 bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 py-16 rounded-2xl shadow-lg text-white w-11/12 mx-auto"> 
+
+    <section className="my-16 bg-gradient-to-b from-[#009A81] via-emerald-500 to-[#80CDC0] py-16 rounded-2xl shadow-lg text-white w-11/12 mx-auto"> 
       <h2 className="text-3xl font-bold text-center mb-10 drop-shadow-lg">
         What Our Customers Say
       </h2>
@@ -50,10 +49,10 @@ const Reviews = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
-            // 🔥 Removed bg-base-100 and shadow, kept transparent
+
             className="p-6 rounded-xl text-center relative"
           >
-            {/* Avatar */}
+
             <div className="flex justify-center">
               <img
                 src={review.image}
@@ -62,23 +61,22 @@ const Reviews = () => {
               />
             </div>
 
-            {/* Text */}
-            {/* 🔥 Changed text-gray-700 to white for contrast */}
+
             <p className="mt-4 text-lg italic text-white">“{review.text}”</p>
 
-            {/* Rating */}
+
             <div className="flex justify-center mt-4">
               {Array.from({ length: review.rating }).map((_, i) => (
                 <Star key={i} className="w-5 h-5 text-yellow-300 fill-yellow-300" />
               ))}
             </div>
 
-            {/* Name */}
-            <h3 className="mt-3 font-semibold text-yellow-200">{review.name}</h3> {/* 🔥 Highlighted name */}
+
+            <h3 className="mt-3 font-semibold text-yellow-200">{review.name}</h3>
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation */}
+
         <div className="flex gap-4 mt-8">
           <button
             onClick={prevReview}

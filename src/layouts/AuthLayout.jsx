@@ -6,10 +6,10 @@ import Footer from '../Components/Footer';
 const AuthLayout = () => {
     return (
         <div>
-            <nav className='w-11/12 mx-auto'>
+            <nav className='mx-auto mb-5 bg-[#00927F] text-white fixed top-0 left-0 right-0 z-50'>
                 <Navbar></Navbar>
             </nav>
-            <main>
+            <main className='mt-20'>
                 <Outlet></Outlet>
             </main>
             <footer>

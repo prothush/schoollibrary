@@ -57,11 +57,11 @@ const Login = () => {
                         <div>
                             <Link to="/auth/forgot" className="link link-hover">Forgot password?</Link>
                         </div>
-                        <button type='submit' className="btn btn-neutral mt-4">Login</button>
+                        <button type='submit' className="btn bg-[#00927F] text-white btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000] mt-4">Login</button>
                     </form>
                     <h3 className='text-center text-lg font-semibold divider'>Or</h3>
-                    <button onClick={handleGoogle} className="btn btn-neutral"><FcGoogle size={20} /> Sign In With Google</button>
-                    <p className='font-semibold text-center'>Don't Have An Account? <Link className='text-secondary' to="/auth/register">Register</Link></p>
+                    <button onClick={handleGoogle} className="btn bg-[#00927F] text-white btn-outline border-[#00E958]/50 hover:bg-[#00E958]/50 hover:text-[#000]"><FcGoogle size={20} /> Sign In With Google</button>
+                    <p className='font-semibold text-center'>Don't Have An Account? <Link className='text-[#009A81]' to="/auth/register">Register</Link></p>
                 </div>
             </div>
         </div>
