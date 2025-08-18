@@ -16,7 +16,7 @@ const MainLayout = () => {
             <nav className='mx-auto mb-5 bg-[#00927F] text-white fixed top-0 left-0 right-0 z-50'>
                 <Navbar></Navbar>
             </nav>
-            <main className='py-20'>
+            <main className='py-15'>
                 {state === "loading" ? <Loading></Loading> : <Outlet></Outlet>}
                 
             </main>
